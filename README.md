@@ -32,3 +32,7 @@
 #### run the app with:
 
 `nodemon app.js`
+
+#### notes:
+
+i ran into a small database error when getting setup with sequalize and running the `createdb make-parties` command. to get around this, i had to run `brew services restart  postgresql`.

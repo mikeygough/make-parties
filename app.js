@@ -21,10 +21,14 @@ app.engine(
 // use handlebars to render
 app.set('view engine', 'handlebars');
 
+// initialize body-parser
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// import models
+const models = require('./db/models');
+
 // routes
-// app.get('/', (req, res) => {
-//   res.render('home', { msg: 'Handlebars are Cool!' });
-// });
 
 // OUR MOCK ARRAY OF PROJECTS
 var events = [
@@ -50,7 +54,26 @@ var events = [
 
 // INDEX
 app.get('/', (req, res) => {
-  res.render('events-index', { events: events });
+  models.Event.findAll({ order: [['createdAt', 'DESC']] }).then(
+    (events) => {
+      res.render('events-index', { events: events });
+    }
+  );
+});
+
+// CREATE
+app.get('/events/new', (req, res) => {
+  res.render('events-new', {});
+});
+
+app.post('/events', (req, res) => {
+  models.Event.create(req.body)
+    .then((event) => {
+      res.redirect(`/`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 const port = process.env.PORT || 3000;

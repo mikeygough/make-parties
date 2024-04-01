@@ -123,6 +123,18 @@ app.put('/events/:id', (req, res) => {
     });
 });
 
+// DELETE
+app.delete('/events/:id', (req, res) => {
+  models.Event.findByPk(req.params.id)
+    .then((event) => {
+      event.destroy();
+      res.redirect(`/`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

@@ -1,3 +1,6 @@
+// env variables
+require('dotenv').config();
+
 // initialize express
 const express = require('express');
 const methodOverride = require('method-override');

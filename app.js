@@ -2,14 +2,16 @@
 require('dotenv').config();
 
 // initialize express
-import express from 'express';
-import methodOverride from 'method-override';
+const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
 
 // require handlebars
-import { engine } from 'express-handlebars';
-import Handlebars from 'handlebars';
-import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
+const { engine } = require('express-handlebars');
+const Handlebars = require('handlebars');
+const {
+  allowInsecurePrototypeAccess,
+} = require('@handlebars/allow-prototype-access');
 
 // use "main" as default layout
 app.engine(
@@ -24,14 +26,14 @@ app.engine(
 app.set('view engine', 'handlebars');
 
 // initialize body-parser
-import { urlencoded } from 'body-parser';
-app.use(urlencoded({ extended: true }));
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // initialize methodOverride
 app.use(methodOverride('_method'));
 
 // import models
-import models from './db/models';
+const models = require('./db/models');
 
 // import controllers
 require('./controllers/events')(app, models);

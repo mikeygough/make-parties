@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = function (app, models) {
   // INDEX
   app.get('/', (req, res) => {
@@ -29,6 +31,11 @@ module.exports = function (app, models) {
       include: [{ model: models.Rsvp }],
     })
       .then((event) => {
+        let createdAt = event.createdAt;
+        createdAt = moment(createdAt).format(
+          'MMMM Do YYYY, h:mm:ss a'
+        );
+        event.createdAtFormatted = createdAt;
         res.render('events-show', { event: event });
       })
       .catch((err) => {

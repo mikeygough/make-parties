@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class Event extends Model {
     static associate(models) {
       Event.hasMany(models.Rsvp);
+      // Event.belongsTo(models.User);
     }
   }
   Event.init(

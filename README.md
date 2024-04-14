@@ -33,6 +33,21 @@
 
 `nodemon app.js`
 
+#### sequelize cli:
+
+example model create:
+
+`sequelize model:create --name User --attributes firstName:string,lastName:string,email:string,password:string`
+
+then migrate:
+
+`sequelize db:migrate`
+
 #### notes:
 
 i ran into a small database error when getting setup with sequalize and running the `createdb make-parties` command. to get around this, i had to run `brew services restart  postgresql`.
+
+#### dummy data
+
+jack@gmail.com
+password

@@ -10,6 +10,16 @@
 - Users can rsvp to events (/rsvps/create, /rsvps/new)
 - Users can cancel their rsvp (/rsvps/destroy)
 
+Logged out users can:
+
+- See events
+- See Rsvps
+
+Logged in users can:
+
+- Create events
+- RSVP
+
 #### resourceful routes:
 
 | URL              | HTTP Verb | Action  | What it Does           |

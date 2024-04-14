@@ -20,6 +20,11 @@
       </li>
       {{#if currentUser}}
         <li>
+          <a class='nav-link' href='/'>Hey
+            {{currentUser.firstName}}</a>
+        </li>
+
+        <li>
           <a class='nav-link' href='/logout'>Logout</a>
         </li>
       {{else}}

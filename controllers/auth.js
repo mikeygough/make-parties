@@ -17,6 +17,7 @@ module.exports = function (app, models) {
 
   // POST SIGNUP
   app.post('/sign-up', (req, res) => {
+    console.log(req.body);
     models.User.create(req.body)
       .then(() => {
         const mpJWT = generateJWT(req.body);
